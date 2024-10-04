@@ -25,7 +25,6 @@ class TestsRegistration:
         WebDriverWait(driver_launch, 10).until(EC.url_contains('login'))
         current_url = driver_launch.current_url
         assert 'login' in current_url, f"Expected URL to contain 'login', but got {current_url}"
-        driver_launch.quit()
 
     def test_reg_new_user_with_wrong_paswd(self, driver_launch):
         personal_cabinet = driver_launch.find_element(*MainPageLocators.personal_cabinet)
@@ -44,4 +43,3 @@ class TestsRegistration:
         registration.click()
         error_text = driver_launch.find_element(*RegistrationPageLocators.error_text)
         assert error_text.text == 'Некорректный пароль'
-        driver_launch.quit()
